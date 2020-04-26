@@ -1,0 +1,36 @@
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/mvc
+           http://www.springframework.org/schema/mvc/spring-mvc.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--controller层注解扫描-->
+    <context:component-scan base-package="cn">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+    </context:component-scan>
+    <!--加载注解驱动-->
+    <mvc:annotation-driven/>
+    <mvc:resources mapping="/admin/css/**" location="/admin/css/"/>
+    <mvc:resources mapping="/admin/images/**" location="/admin/images/"/>
+    <mvc:resources mapping="/admin/jquery/**" location="/admin/jquery/"/>
+    <mvc:resources mapping="/admin/js/**" location="/admin/js/"/>
+    <mvc:resources mapping="/client/bank_img/**" location="/client/bank_img/"/>
+    <mvc:resources mapping="/client/bookcover/**" location="/client/bookcover/"/>
+    <mvc:resources mapping="/client/ad/**" location="/client/ad/"/>
+    <mvc:resources mapping="/client/css/**" location="/client/css/"/>
+    <mvc:resources mapping="/client/images/**" location="/client/images/"/>
+    <mvc:resources mapping="/client/js/**" location="/client/js/"/>
+    <mvc:resources mapping="/productImg/**" location="/productImg/"/>
+    <mvc:default-servlet-handler/>
+
+<!--    配置视图解析器-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    </bean>
+
+</beans>
