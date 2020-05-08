@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class OrderItem {
-    int order_id;
+    String order_id;
     int product_id;//商品编号
     int buynum;//购买数量
 }

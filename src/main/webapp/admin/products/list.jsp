@@ -46,20 +46,20 @@
 								<td class="ta_01" bgColor="#ffffff">
 								<select name="category" id="category">
 										<option value="" selected="selected">--选择商品类别--</option>
-										<option value="literature">literature</option>
-										<option value="life">life</option>
-										<option value="computers">computers</option>
-										<option value="foreign languages">foreign languages</option>
-										<option value="manage">manage</option>
-										<option value="encouragement">encouragement</option>
-										<option value="social sciences">social sciences</option>
-										<option value="academic">academic</option>
-										<option value="children">children</option>
-										<option value="art">art</option>
-										<option value="original">original</option>
-										<option value="science">science</option>
-										<option value="exam">exam</option>
-										<option value="home life">home life</option>
+										<option value="literature">文学</option>
+										<option value="life">生活</option>
+										<option value="computers">计算机</option>
+										<option value="foreign languages">外语</option>
+										<option value="manage">经管</option>
+										<option value="encouragement">励志</option>
+										<option value="social sciences">社科</option>
+										<option value="academic">学术</option>
+										<option value="children">少儿</option>
+										<option value="art">艺术</option>
+										<option value="original">原版</option>
+										<option value="science">科技</option>
+										<option value="exam">考试</option>
+										<option value="home life">生活百科</option>
 								</select>
 								</td>
 							</tr>

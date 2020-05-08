@@ -17,7 +17,7 @@
 				    <table width="60%" border="0" cellspacing="0" style="margin-top:70px">
 						<tr>
 							<td style="width:98">
-								<img src="images/IconTexto_WebDev_009.jpg" width="128" height="128" />
+								<img src="${pageContext.request.contextPath }/images/IconTexto_WebDev_009.jpg" width="128" height="128" />
 							</td>
 							<td style="padding-top:30px">
 								<font style="font-weight:bold; color:#FF0000">亲，订单生成成功，请到“我的账户”-“订单查询”中支付！</font><br /> <br />

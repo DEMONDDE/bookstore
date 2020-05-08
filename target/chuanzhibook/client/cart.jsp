@@ -112,7 +112,7 @@
 											<div style="text-align:right; margin-top:10px">
 											    <!--继续购物 -->
 												<a href="${pageContext.request.contextPath}/showProductByPage">
-													<img src="images/gwc_jx.gif" border="0" />
+													<img src="${pageContext.request.contextPath}/client/images/gwc_jx.gif" border="0" />
 												</a>
 												&nbsp;&nbsp;&nbsp;&nbsp;
                                                  <!--结账 -->

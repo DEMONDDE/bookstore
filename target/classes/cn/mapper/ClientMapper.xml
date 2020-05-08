@@ -17,4 +17,42 @@
     <select id="longin" parameterType="String" resultType="user">
         select * from user where username = #{username}
     </select>
+
+    <select id="findTotalCategoryBook" parameterType="String" resultType="Integer">
+        SELECT COUNT(*)  FROM products
+        <if test="_parameter != null">
+               where category = #{category}
+            </if>
+    </select>
+
+    <select id="findBook" resultType="products">
+        select * from products where 1=1
+        <if test="category">
+            AND category = #{category}
+        </if>
+        limit #{start},#{currentCount}
+    </select>
+
+    <select id="findProductById" parameterType="Integer" resultType="products">
+        select * from products where id = #{id}
+    </select>
+
+    <insert id="addOrder" parameterType="orders">
+        insert into orders (id,receiverName,receiverAddress,receiverPhone,orderTime,user_id) values(#{id},#{receiverName},#{receiverAddress},#{receiverPhone},#{orderTime},#{user_id})
+    </insert>
+
+    <insert id="addOrderItems" parameterType="List">
+        insert into orderItem (order_id,product_id,buynum) values
+        <foreach collection="list" item="orderitem" separator=",">
+            (#{orderitem.order_id},#{orderitem.product_id},#{orderitem.buynum})
+        </foreach>
+    </insert>
+
+    <select id="findTotalCategoryBookByName" parameterType="String" resultType="Integer">
+        SELECT COUNT(*)  FROM products where name = #{textfield}
+    </select>
+
+    <select id="findBookByName" resultType="products">
+        select * from products where name = #{textfield} limit #{start},#{rows}
+    </select>
 </mapper>
