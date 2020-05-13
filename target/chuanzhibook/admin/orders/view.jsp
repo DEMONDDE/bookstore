@@ -37,7 +37,7 @@
 		</tr>
 		<tr>
 			<td align="center" bgColor="#f5fafe" class="ta_01">下单时间：</td>
-			<td class="ta_01" bgColor="#ffffff" colSpan="3">${order.ordertime}</td>
+			<td class="ta_01" bgColor="#ffffff" colSpan="3">${order.orderTime}</td>
 		</tr>
 		<TR>
 			<TD class="ta_01" align="center" bgColor="#f5fafe">商品信息</TD>

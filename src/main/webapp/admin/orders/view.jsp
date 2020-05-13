@@ -37,7 +37,7 @@
 		</tr>
 		<tr>
 			<td align="center" bgColor="#f5fafe" class="ta_01">下单时间：</td>
-			<td class="ta_01" bgColor="#ffffff" colSpan="3">${order.ordertime}</td>
+			<td class="ta_01" bgColor="#ffffff" colSpan="3">${order.orderTime}</td>
 		</tr>
 		<TR>
 			<TD class="ta_01" align="center" bgColor="#f5fafe">商品信息</TD>
@@ -54,7 +54,7 @@
 						<td width="7%" align="center">商品类别</td>
 						<td width="31%" align="center">商品描述</td>
 					</tr>
-					<c:forEach items="${order.orderItems}" var="item" varStatus="vs">
+					<c:forEach items="${order.orderitem}" var="item" varStatus="vs">
 						<tr style="FONT-WEIGHT: bold; FONT-SIZE: 12pt; HEIGHT: 25px; BACKGROUND-COLOR: #eeeeee">
 							<td align="center" width="7%">${vs.count }</td>
 							<td width="8%" align="center">

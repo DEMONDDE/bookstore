@@ -1,5 +1,6 @@
 package cn.service;
 
+import cn.po.Orders;
 import cn.po.Products;
 import org.springframework.stereotype.Service;
 
@@ -28,4 +29,21 @@ public interface AdminService {
 
    //查找
    public Products findProductById(int id);
+
+   //获取销售榜单
+   public List<Object[]> download(String year, String month);
+
+   //获取订单
+    public List<Orders> findOrders();
+
+    //按条件查询订单
+    public List<Orders> findOrderByManyCondition(String id, String receiverName);
+
+    //按id查询订单
+    public Orders findOrderById(String id);
+
+    //删除订单
+    void delOrderById(String id);
+
+
 }

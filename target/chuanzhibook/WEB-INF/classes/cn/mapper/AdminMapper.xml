@@ -27,4 +27,57 @@
             </if>
         </where>
     </select>
+
+    <insert id="addProduct" parameterType="products">
+        insert into products (name,price,category,pnum,imgurl,description) values (#{name},#{price},#{category},#{pnum},#{imgurl},#{description})
+    </insert>
+
+    <delete id="deleteProductById" parameterType="Integer">
+        delete from products where id = #{id}
+    </delete>
+
+    <select id="findProductById" resultType="products" parameterType="Integer">
+        select * from products where id = #{id}
+    </select>
+
+    <update id="editProduct" parameterType="products">
+        update products set name=#{name},price=#{price},category=#{category},pnum=#{pnum},imgurl=#{imgurl},description=#{description}
+        where id = #{id}
+    </update>
+
+    <select id="findOrders" resultMap="ordersUser">
+        select orders.* from orders ,user where orders.user_id = user.id order by orders.user_id
+    </select>
+
+    <resultMap id="ordersUser" type="orders">
+        <id property="id" column="id"></id>
+        <result property="receiverName" column="receiverName"></result>
+        <result property="receiverAddress" column="receiverAddress"></result>
+        <result property="receiverPhone" column="receiverPhone"></result>
+        <result property="payState" column="payState"></result>
+        <result property="orderTime" column="orderTime"></result>
+        <result property="user_id" column="user_id"></result>
+        <association property="user" column="user_id" javaType="user" select="cn.mapper.AdminMapper.findUserId"></association>
+    </resultMap>
+    <select id="findUserId" resultType="user" parameterType="Integer">
+        select * from user where id = #{id}
+    </select>
+
+    <select id="findOrderByManyCondition" resultMap="ordersUser">
+        select orders.* from orders ,user where orders.user_id = user.id
+        <if test="id != ''">
+            AND orders.id = #{id}
+        </if>
+        <if test="receiverName != ''">
+            AND receiverName = #{receiverName}
+        </if>
+    </select>
+
+    <select id="findOrderById" resultType="orders" parameterType="String">
+        select * from orders where id = #{id}
+    </select>
+
+    <select id="findOrderItemByOrder" parameterType="orders" resultType="orderItem">
+        select * from orderItem where order_id = #{id}
+    </select>
 </mapper>

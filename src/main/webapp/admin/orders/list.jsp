@@ -94,7 +94,7 @@
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center" width="10%">${order.receiverPhone }</td>
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center">${order.money}</td>
 									<td width="8%" align="center">${order.user.username}</td>
-									<td width="10%" align="center">${order.paystate==0?"未支付":"已支付"}</td>
+									<td width="10%" align="center">${order.payState==0?"未支付":"已支付"}</td>
 									<td align="center" style="HEIGHT: 22px">
 										<a href="${pageContext.request.contextPath}/findOrderById?id=${order.id}&type=admin">
 											<img src="${pageContext.request.contextPath}/admin/images/button_view.gif" border="0" style="CURSOR: hand">
@@ -102,13 +102,13 @@
 									</td>
 									<td align="center" style="HEIGHT: 22px">
                                         <!--  已支付，弹出提示框由操作人确认 -->
-									    <c:if test="${order.paystate!=0 }">
+									    <c:if test="${order.payState!=0 }">
 											<a href="${pageContext.request.contextPath}/delOrderById?id=${order.id}&type=admin" onclick="javascript:return o_del()">
 												<img src="${pageContext.request.contextPath}/admin/images/i_del.gif" width="16" height="16" border="0" style="CURSOR: hand">
 											</a>
 										</c:if> 
 										<!--  未支付 ，不能删除-->
-										<c:if test="${order.paystate==0 }">
+										<c:if test="${order.payState==0 }">
 											<a href="javascript:alert('不能删除未支付订单')">
 												<img src="${pageContext.request.contextPath}/admin/images/i_del.gif" width="16" height="16" border="0" style="CURSOR: hand">
 											</a>

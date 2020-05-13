@@ -174,7 +174,7 @@ public class ClientController {
             orderItem.setOrder_id(order.getId());
             orderItem.setBuynum(cart.get(p));
             orderItem.setProduct_id(p.getId());
-            order.getItems().add(orderItem);
+            order.getOrderitem().add(orderItem);
         }
         clientService.addOrder(order);
         return "/client/createOrderSuccess.jsp";

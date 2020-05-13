@@ -1,5 +1,6 @@
 package cn.controller;
 
+import cn.po.Orders;
 import cn.po.Products;
 import cn.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +9,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
-import java.math.BigDecimal;
+import java.io.PrintWriter;
+
 import java.util.List;
 
 /**
@@ -46,7 +50,7 @@ public class AdminController {
         return "/admin/products/list.jsp";
     }
 
-    //上传商品(未检测)
+    //上传商品
     @RequestMapping("/addProduct")
     public String addProduct(MultipartFile upload, Products product, HttpServletRequest request) throws IOException {
         //文件保存路径
@@ -54,7 +58,7 @@ public class AdminController {
         //数据库保存路径
         String dataUrl = "/client/bookcover/";
         //获取文件名
-        String fileName = upload.getName();
+        String fileName = upload.getOriginalFilename();
         //完成上传
         upload.transferTo(new File(path,fileName));
         //拼接url
@@ -69,29 +73,36 @@ public class AdminController {
     }
 
 
-    //删除商品(未检测)
+    //删除商品
     @RequestMapping("deleteProduct")
-    public String deleteProduct(int id){
+    public String deleteProduct(int id,HttpServletRequest request){
+        //删除图片
+        Products products = adminService.findProductById(id);
+        String imgUrl = products.getImgurl();
+        String url = request.getSession().getServletContext().getRealPath("");
+        url = url + imgUrl;
+        File imgFile = new File(url);
+        imgFile.delete();
         //删除操作
         adminService.deleteProductById(id);
         return "/listProduct";
     }
 
-    //按id查询(未检测)
-    @RequestMapping("findProductById")
+    //按id查询
+    @RequestMapping("adminfindProductById")
     public String findProductById(int id,Model model){
         Products products = adminService.findProductById(id);
         model.addAttribute("p",products);
         return "/admin/products/edit.jsp";
     }
-    //修改商品(未检测)
+    //修改商品
     @RequestMapping("editProduct")
     public String editProduct(MultipartFile upload,Products product,HttpServletRequest request) throws IOException {
         String path = request.getSession().getServletContext().getRealPath("/client/bookcover/");
         //数据库保存路径
         String dataUrl = "/client/bookcover/";
         //获取文件名
-        String fileName = upload.getName();
+        String fileName = upload.getOriginalFilename();
         //完成上传
         upload.transferTo(new File(path,fileName));
         //拼接url
@@ -102,4 +113,61 @@ public class AdminController {
         return "/listProduct";
     }
 
+    //榜单下载（未测试）
+    @RequestMapping("/download")
+    public void download(String year, String month, HttpServletResponse response, ServletContext servletContext) throws IOException {
+        //查询销售数据
+        List<Object[]> ps = adminService.download(year, month);
+
+        //拼接文件名
+        String fileName = year + "年" + month + "月销售榜单";
+        response.setContentType(servletContext.getMimeType(fileName));
+
+        //设置文件名
+        response.setHeader("Content-Disposition","attachment;filename="+new String(fileName.getBytes("GBK"),"iso8859-1"));
+        response.setCharacterEncoding("gbk");
+
+        //写入数据
+        PrintWriter out = response.getWriter();
+        for(int i = 0; i < ps.size(); i++){
+            Object[] arr = ps.get(i);
+            out.println(arr[0]+","+arr[i]);
+        }
+        out.flush();
+        out.close();
+    }
+
+    //订单查询
+    @RequestMapping("/findOrders")
+    public String findOrders(Model model){
+        List<Orders> orders = adminService.findOrders();
+        model.addAttribute("orders",orders);
+        return "/admin/orders/list.jsp";
+    }
+
+    //订单按条件查询
+    @RequestMapping("/findOrderByManyCondition")
+    public String findOrderByManyCondition(Model model,String id, String receiverName){
+
+        List<Orders> orders = adminService.findOrderByManyCondition(id, receiverName);
+        model.addAttribute("orders",orders);
+        return "/admin/orders/list.jsp";
+    }
+
+    //订单按id查询
+    @RequestMapping("/findOrderById")
+    public String findOrderById(String id, Model model){
+        Orders order = adminService.findOrderById(id);
+        model.addAttribute("order",order);
+        return "/admin/orders/view.jsp";
+    }
+
+    //订单删除
+    @RequestMapping("/delOrderById")
+    public String delOrderById(String id,String type){
+        if(type != null && type.trim().length() > 0){
+            adminService.delOrderById(id);
+        }
+        return "/findorders";
+    }
 }

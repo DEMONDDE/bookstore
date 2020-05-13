@@ -1,10 +1,13 @@
 package cn.service.Impl;
 
 import cn.mapper.AdminMapper;
+import cn.po.OrderItem;
+import cn.po.Orders;
 import cn.po.Products;
 import cn.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -13,6 +16,7 @@ import java.util.List;
  */
 
 @Service("adminService")
+@Transactional
 public class AdminServiceImpl implements AdminService {
 
     @Autowired
@@ -58,4 +62,38 @@ public class AdminServiceImpl implements AdminService {
 
         return adminMapper.findProductById(id);
     }
+
+    @Override
+    public List<Object[]> download(String year, String month) {
+        List<Object[]> salesList = null;
+        salesList = adminMapper.salesList(year,month);
+        return salesList;
+    }
+
+    @Override
+    public List<Orders> findOrders() {
+
+        return adminMapper.findOrders();
+    }
+
+    @Override
+    public List<Orders> findOrderByManyCondition(String id, String reveiverName) {
+        return adminMapper.findOrderByManyCondition(id, reveiverName);
+    }
+
+    @Override
+    public Orders findOrderById(String id) {
+        Orders order = adminMapper.findOrderById(id);
+        List<OrderItem> items = adminMapper.findOrderItemByOrder(order);
+        order.setOrderitem(items);
+        return order;
+    }
+
+    @Override
+    public void delOrderById(String id) {
+        adminMapper.delOrderById(id);
+        adminMapper.delOrderItemById(id);
+    }
+
+
 }

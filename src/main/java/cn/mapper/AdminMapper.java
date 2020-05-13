@@ -1,6 +1,9 @@
 package cn.mapper;
 
+import cn.po.OrderItem;
+import cn.po.Orders;
 import cn.po.Products;
+import cn.po.User;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -28,4 +31,25 @@ public interface AdminMapper {
 
     //按id查询
     public Products findProductById(Integer id);
+
+    //查询榜单
+    public List<Object[]> salesList(String year, String month);
+
+    //查询订单
+    public List<Orders> findOrders();
+
+    //按条件查询订单
+    public List<Orders> findOrderByManyCondition(@Param("id") String id, @Param("receiverName") String receiverName);
+
+    //按id查询订单
+    public Orders findOrderById(String id);
+
+    //根据订单查询商品
+    public List<OrderItem> findOrderItemByOrder(Orders order);
+
+    //删除订单
+    void delOrderById(String id);
+
+    //删除物品
+    void delOrderItemById(String id);
 }

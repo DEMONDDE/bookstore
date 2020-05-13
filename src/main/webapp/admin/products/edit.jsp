@@ -1,5 +1,6 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <HTML>
 <HEAD>
 	<meta http-equiv="Content-Language" content="zh-cn">
@@ -75,7 +76,8 @@
 			<tr>
 				<td align="center" bgColor="#f5fafe" class="ta_01">商品图片：</td>
 				<td class="ta_01" bgColor="#ffffff" colSpan="3">
-				<input type="file" name="upload" size="30" value="" /></td>
+				<input type="file" name="upload" size="30" value=""} /></td>
+
 			</tr>
 			<TR>
 				<TD class="ta_01" align="center" bgColor="#f5fafe">商品描述：</TD>

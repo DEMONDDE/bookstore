@@ -17,6 +17,7 @@
     <!--加载注解驱动-->
     <mvc:annotation-driven/>
 
+<!--    静态资源-->
     <mvc:resources mapping="/admin/css/**" location="/admin/css/"/>
     <mvc:resources mapping="/admin/images/**" location="/admin/images/"/>
     <mvc:resources mapping="/admin/jquery/**" location="/admin/jquery/"/>
@@ -31,10 +32,11 @@
 
 
     <mvc:default-servlet-handler/>
-
-<!--    配置视图解析器-->
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+<!-- 文件解析器-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="10485760"/>
     </bean>
+
     
 
 

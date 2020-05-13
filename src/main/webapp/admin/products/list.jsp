@@ -129,7 +129,7 @@
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center" width="8%">${p.pnum }</td>
 									<td style="CURSOR: hand; HEIGHT: 22px" align="center">${p.category}</td>
 									<td align="center" style="HEIGHT: 22px" width="7%">
-									    <a href="${pageContext.request.contextPath}/findProductById?id=${p.id}&type=admin">
+									    <a href="${pageContext.request.contextPath}/adminfindProductById?id=${p.id}&type=admin">
 											<img src="${pageContext.request.contextPath}/admin/images/i_edit.gif" border="0" style="CURSOR: hand"> 
 										</a>
 									</td>

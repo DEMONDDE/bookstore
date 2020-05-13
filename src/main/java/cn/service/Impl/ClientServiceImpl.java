@@ -102,7 +102,7 @@ public class ClientServiceImpl implements ClientService {
         //存储订单信息
         clientMapper.addOrder(order);
         //存储订单物品信息
-        clientMapper.addOrderItems(order.getItems());
+        clientMapper.addOrderItems(order.getOrderitem());
     }
 
 

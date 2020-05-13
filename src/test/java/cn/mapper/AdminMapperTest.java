@@ -1,5 +1,7 @@
 package cn.mapper;
 
+import cn.po.OrderItem;
+import cn.po.Orders;
 import cn.po.Products;
 import org.junit.Before;
 import org.junit.Test;
@@ -41,4 +43,33 @@ public class AdminMapperTest {
         List<Products> list = adminMapper.findProductByManyCondition(null,"101.jpg",null,null,null);
         System.out.println(list.toString());
     }
+
+    //findOrder测试
+    @Test
+    public void findOrderTest(){
+        List<Orders> orders = adminMapper.findOrders();
+        System.out.println(orders.get(0).toString());
+    }
+    //findOrderByManyCondition测试
+    @Test
+    public void findOrderByManyConditionTest(){
+        List<Orders> orders = adminMapper.findOrderByManyCondition("","");
+        System.out.println(orders.get(0).toString());
+    }
+
+    //findOrderById测试
+    @Test
+    public void findOrderById(){
+        Orders order = adminMapper.findOrderById("5301b866-544e-4040-b1f8-e8a3dd95aa64");
+        System.out.println(order.toString());
+    }
+
+    //findOrderItemByOrder测试
+    @Test
+    public void findOrderItemByOrder(){
+        Orders order = adminMapper.findOrderById("5301b866-544e-4040-b1f8-e8a3dd95aa64");
+        List<OrderItem> items = adminMapper.findOrderItemByOrder(order);
+        System.out.println(items.toString());
+    }
+
 }
