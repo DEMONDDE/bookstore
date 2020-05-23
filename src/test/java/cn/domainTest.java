@@ -5,6 +5,7 @@ import cn.domain.MailUtiles;
 import cn.mapper.ClientMapper;
 import cn.mapper.DatabaseInsert;
 import cn.po.Products;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -101,5 +102,27 @@ public class domainTest {
             intNum = intNum / 10;
         }
         return cnt;
+    }
+
+    @Test
+    public void test() {
+        int[] nums = new int[]{1, 2, 1, 2, 1};
+        int k = 3;
+        int result = 0;//记录结果
+        int cnt = 0;
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i; j < nums.length; j++) {
+                cnt = cnt + nums[i];
+                if (cnt == k) {
+                    result++;
+                    break;
+                }
+                if (cnt > k) {
+                    break;
+                }
+            }
+            cnt = 0;
+        }
+        Assert.assertEquals(result, 4);
     }
 }

@@ -29,7 +29,7 @@
   </filter>
   <filter-mapping>
     <filter-name>checkLogin</filter-name>
-    <url-pattern>/client/order.jsp</url-pattern>
+    <url-pattern>/client/order</url-pattern>
   </filter-mapping>
 
   <!-- 配置前端控制器 -->

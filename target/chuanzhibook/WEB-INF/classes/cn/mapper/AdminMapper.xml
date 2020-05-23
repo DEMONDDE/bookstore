@@ -80,4 +80,12 @@
     <select id="findOrderItemByOrder" parameterType="orders" resultType="orderItem">
         select * from orderItem where order_id = #{id}
     </select>
+
+    <delete id="delOrderById" parameterType="String">
+        delete from orders where id = #{id}
+    </delete>
+
+    <delete id="delOrderItemById" parameterType="String">
+        delete from orderItem where order_id = #{id}
+    </delete>
 </mapper>

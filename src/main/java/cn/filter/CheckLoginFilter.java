@@ -22,10 +22,13 @@ public class CheckLoginFilter implements Filter {
         //对servletRequest进行转换来获取session
         HttpServletRequest request =(HttpServletRequest) servletRequest;
         User user = (User) request.getSession().getAttribute("user");
+        System.out.println("已进入过滤器");
         System.out.println(1);
         if(user == null){
-            request.getRequestDispatcher("/client/login.jsp").forward(servletRequest,servletResponse);
+            System.out.println("已进入过滤器1");
+            request.getRequestDispatcher("/WEB-INF/views/client/login.jsp").forward(servletRequest,servletResponse);
         }
+        System.out.println("已进入过滤器2");
         filterChain.doFilter(servletRequest,servletResponse);
     }
 

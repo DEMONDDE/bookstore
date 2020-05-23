@@ -13,6 +13,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.Cookie;
@@ -35,18 +36,18 @@ public class ClientController {
 
     //用户注册
     @RequestMapping("register")
+    @ResponseBody
     public String register(HttpSession session, User user,HttpServletResponse response) throws IOException {
         String code = (String) session.getAttribute("CHECKCODE_SERVER");
         if(!(user.getActiviecode().equals(code))){
-            return "/client/register.jsp";
+            return "ERRORCode";
         }
         //用户名不允许重复
         if (clientService.checkUsername(user.getUsername())){
-            System.out.println("2");
-            return "/client/register.jsp";
+            return "ERRORName";
         }
         clientService.register(user);
-        return "/client/registersuccess.jsp";
+        return "OK";
     }
 
     //公告版和本周热卖
@@ -245,6 +246,12 @@ public class ClientController {
         //将验证码存入session
         String checkcode = code.toString();
         session.setAttribute("CHECKCODE_SERVER", checkcode);
+    }
+
+    //转到order
+    @RequestMapping("/client/order")
+    public String toOrder(){
+        return "/client/login.jsp";
     }
 
 
