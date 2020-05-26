@@ -19,14 +19,12 @@
 		function submitOne() {
 			$.post("${pageContext.request.contextPath}/register",$("#registerForm").serialize(),function (data) {
 				if(data == "OK"){
-					alert("注册成功");
-					window.location.reload();
+					window.location.href = "http://localhost${pageContext.request.contextPath}/client/registersuccess"
 				}else if(data == "ERRORName"){
 					alert("用户名已存在");
-					window.location.reload();
 				}else if(data == "ERRORCode"){
 					alert("验证码错误");
-					window.location.reload();
+					changeImage();
 				}
 
 			});
@@ -43,7 +41,7 @@
 <!-- 网上书城菜单列表  end -->
 <!-- 3.网上书城用户注册  start -->
 	<div id="divcontent">
-		<form action="${pageContext.request.contextPath}/register" method="post" onsubmit="return checkForm();" id = "registerForm">
+		<form  onsubmit="return checkForm();" id = "registerForm">
 			<table width="850px" border="0" cellspacing="0">
 				<tr>
 					<td style="padding: 30px"><h1>新用户注册</h1>
@@ -122,7 +120,7 @@
 						<table width="70%" border="0" cellspacing="0">
 							<tr>
 								<td style="padding-top: 20px; text-align: center">
-									<input type="image" src="${pageContext.request.contextPath}/client/images/signup.gif" name="submit" border="0" width="140" height="35"/>
+									<img src="${pageContext.request.contextPath}/client/images/signup.gif" width="140" height="35" border="0" onclick="submitOne()">
 								</td>
 							</tr>
 						</table>

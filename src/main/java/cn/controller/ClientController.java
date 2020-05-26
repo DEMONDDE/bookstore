@@ -39,7 +39,8 @@ public class ClientController {
     @ResponseBody
     public String register(HttpSession session, User user,HttpServletResponse response) throws IOException {
         String code = (String) session.getAttribute("CHECKCODE_SERVER");
-        if(!(user.getActiviecode().equals(code))){
+        System.out.println(user.getActiviecode());
+        if(!(user.getActiviecode().equalsIgnoreCase(code))){
             return "ERRORCode";
         }
         //用户名不允许重复
