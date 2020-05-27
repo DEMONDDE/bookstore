@@ -34,9 +34,11 @@ public class MailUtiles {
         //发送邮件，准备发送内容
         Message message = new MimeMessage(session);
         message.setFrom(new InternetAddress("781140432@qq.com"));
+        //设置收信人
         message.setRecipient(Message.RecipientType.TO,new InternetAddress(userEmail));
         //设置邮件主题
         message.setSubject("用户激活");
+        //发送内容
         message.setContent(emailContent, "text/html;charset=utf-8");
         Transport.send(message);
     }

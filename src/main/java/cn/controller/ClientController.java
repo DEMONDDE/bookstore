@@ -39,7 +39,6 @@ public class ClientController {
     @ResponseBody
     public String register(HttpSession session, User user,HttpServletResponse response) throws IOException {
         String code = (String) session.getAttribute("CHECKCODE_SERVER");
-        System.out.println(user.getActiviecode());
         if(!(user.getActiviecode().equalsIgnoreCase(code))){
             return "ERRORCode";
         }
@@ -249,10 +248,10 @@ public class ClientController {
         session.setAttribute("CHECKCODE_SERVER", checkcode);
     }
 
-    //转到order
-    @RequestMapping("/client/order")
-    public String toOrder(){
-        return "/client/login.jsp";
+    //以用户进行订单查询
+    @RequestMapping("/mycount/findOrderByUser")
+    public String findOrderByUser(){
+        return "/client/orderlist.jsp";
     }
 
 
