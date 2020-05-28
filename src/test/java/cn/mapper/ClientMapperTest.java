@@ -1,5 +1,6 @@
 package cn.mapper;
 
+import cn.po.Orders;
 import cn.po.Products;
 import cn.po.User;
 import cn.service.ClientService;
@@ -99,5 +100,14 @@ public class ClientMapperTest {
     public void findBookByNameTest(){
         List<Products> list = clientMapper.findBookByName("101.jpg",0,2);
         System.out.println(list.toString());
+    }
+
+    /**
+     * findOrderByUser测试
+     */
+    @Test
+    public void findOrderByUserTest(){
+        List<Orders> orders = clientMapper.findOrderByUser(1);
+        System.out.println(orders.toString());
     }
 }

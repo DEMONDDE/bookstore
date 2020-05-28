@@ -55,4 +55,8 @@
     <select id="findBookByName" resultType="products">
         select * from products where name = #{textfield} limit #{start},#{rows}
     </select>
+
+    <select id="findOrderByUser" resultType="orders">
+        select * from orders where user_id = #{id}
+    </select>
 </mapper>

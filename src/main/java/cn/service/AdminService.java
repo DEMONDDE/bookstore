@@ -18,16 +18,24 @@ public interface AdminService {
    //按条件查询
    public List<Products> findProductByManyCondition(Integer id, String name, String category, Integer minprice, Integer maxprice);
 
+   /**
    //添加商品
+    **/
    public Boolean addProduct(Products product);
 
    //删除商品
    public boolean deleteProductById(int id);
 
+   /**
    //修改产品
+   **/
    public void editProduct(Products product);
 
-   //查找
+    /**
+     * 查找
+     * @param id
+     * @return
+     */
    public Products findProductById(int id);
 
    //获取销售榜单

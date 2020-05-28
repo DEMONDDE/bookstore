@@ -17,13 +17,16 @@ import java.util.Date;
 import java.util.List;
 
 
+/**
+ * @author 胡建德
+ */
 @Service("clientService")
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public class ClientServiceImpl implements ClientService {
 
     @Resource
     private ClientMapper clientMapper;
-//    进行对用户名查重
+
     @Override
     public Boolean checkUsername(String name) {
         int a = clientMapper.checkName(name);
@@ -33,7 +36,7 @@ public class ClientServiceImpl implements ClientService {
         return true;
     }
 
-    //注册用户
+
     @Override
     public void register(User user) {
 
@@ -52,7 +55,7 @@ public class ClientServiceImpl implements ClientService {
         clientMapper.register(user);
     }
 
-    //用户登陆
+
     @Override
     public User login(String username, String password) {
         User user = clientMapper.longin(username);
@@ -73,7 +76,7 @@ public class ClientServiceImpl implements ClientService {
         if(category.equals("全部商品")){
             category = null;
         }
-        int totalCount = clientMapper.findTotalCategoryBook(category);//查找数据总量
+        int totalCount = clientMapper.findTotalCategoryBook(category);
         int totalPage = totalCount % currentCount == 0? totalCount/currentCount:totalCount/currentCount+1;
         //判断页码是否超出范围
         if(currentPage <= 0 ){
@@ -85,7 +88,8 @@ public class ClientServiceImpl implements ClientService {
         bean.setPageCount(currentCount);
         bean.setTotalPage(totalPage);
         bean.setTotalCount(totalCount);
-        int start = (currentPage - 1) * currentCount;//计算起始位置
+        //计算起始位置
+        int start = (currentPage - 1) * currentCount;
         List<Products> list = clientMapper.findBook(category,start,currentCount);
         bean.setPs(list);
         return bean;
@@ -96,7 +100,7 @@ public class ClientServiceImpl implements ClientService {
         return clientMapper.findProductById(id);
     }
 
-    //创建订单
+
     @Override
     public void addOrder(Orders order) {
         //存储订单信息
@@ -109,7 +113,8 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public PageBean<Products> findProductByName(int currentCount, int currentPage, String textfield) {
         PageBean<Products> bean = new PageBean<Products>();
-        int totalCount = clientMapper.findTotalCategoryBookByName(textfield);//查找数据总量
+        //查找数据总量
+        int totalCount = clientMapper.findTotalCategoryBookByName(textfield);
         int totalPage = totalCount % currentCount == 0? totalCount/currentCount:totalCount/currentCount+1;
         //判断页码是否超出范围
         if(currentPage <= 0 ){
@@ -121,10 +126,16 @@ public class ClientServiceImpl implements ClientService {
         bean.setPageCount(currentCount);
         bean.setTotalPage(totalPage);
         bean.setTotalCount(totalCount);
-        int start = (currentPage - 1) * currentCount;//计算起始位置
+        //计算起始位置
+        int start = (currentPage - 1) * currentCount;
         List<Products> list = clientMapper.findBookByName(textfield,start,currentCount);
         bean.setPs(list);
         return bean;
+    }
+
+    @Override
+    public List<Orders> findOrderByUser(int id) {
+        return clientMapper.findOrderByUser(id);
     }
 
 }

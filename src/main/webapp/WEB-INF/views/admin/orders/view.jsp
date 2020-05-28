@@ -58,7 +58,7 @@
 						<tr style="FONT-WEIGHT: bold; FONT-SIZE: 12pt; HEIGHT: 25px; BACKGROUND-COLOR: #eeeeee">
 							<td align="center" width="7%">${vs.count }</td>
 							<td width="8%" align="center">
-								<img src="${pageContext.request.contextPath}${item.p.imgurl}" width="50" height="50">
+								<img src="${pageContext.request.contextPath}/${item.p.imgurl}" width="50" height="50">
 							</td>
 							<td align="center" width="18%">${item.p.id }</td>
 							<td align="center" width="10%">${item.p.name }</td>

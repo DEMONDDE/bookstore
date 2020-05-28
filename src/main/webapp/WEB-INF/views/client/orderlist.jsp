@@ -1,6 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib prefix="p" uri="http://www.kth.com/tag"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
@@ -35,14 +34,14 @@
 							<td class="listtd">
 								<img src="${pageContext.request.contextPath }/client/images/icon1.png" width="15" height="10" />
 								&nbsp;&nbsp;&nbsp;&nbsp; 
-								<a href="${pageContext.request.contextPath }/WEB-INF/views/client/modifyuserinfo.jspfyuserinfo.jsp">用户信息修改</a>
+								<a href="${pageContext.request.contextPath }/client/mycount/modifyuserinfo">用户信息修改</a>
 							</td>
 						</tr>
 						<tr>
 							<td class="listtd">
 								<img src="${pageContext.request.contextPath }/client/images/icon2.png" width="15" height="10" />
 								&nbsp;&nbsp;&nbsp;&nbsp; 
-								<a href="${pageContext.request.contextPath}/findOrderByUser">订单查询</a>
+								<a href="${pageContext.request.contextPath}/mycount/findOrderByUser">订单查询</a>
 							</td>
 						</tr>
 						<tr>
@@ -80,14 +79,14 @@
 										<tr>
 											<td class="tableopentd02">${order.id}</td>
 											<td class="tableopentd02">${order.receiverName }</td>
-											<td class="tableopentd02">${order.ordertime}</td>
-											<td class="tableopentd02">${order.paystate==0?"未支付":"已支付"}</td>
+											<td class="tableopentd02">${order.orderTime}</td>
+											<td class="tableopentd02">${order.payState==0?"未支付":"已支付"}</td>
 											<td class="tableopentd03">
 												<a href="${pageContext.request.contextPath}/findOrderById?id=${order.id}">查看</a>&nbsp;&nbsp;
-												<c:if test="${order.paystate==0 }">
+												<c:if test="${order.payState==0 }">
 													<a href="${pageContext.request.contextPath}/delOrderById?id=${order.id}"  onclick="javascript:return o_del()">刪除</a>
 												</c:if> 
-												<c:if test="${order.paystate!=0 }">
+												<c:if test="${order.payState!=0 }">
 													<a href="${pageContext.request.contextPath}/delOrderById?id=${order.id}&type=client" onclick="javascript:return o_del()">刪除</a>
 												</c:if>
 											</td>

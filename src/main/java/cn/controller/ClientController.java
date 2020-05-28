@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.imageio.ImageIO;
+import javax.jws.soap.SOAPBinding;
+import javax.mail.Session;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -23,6 +25,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.*;
+import java.util.List;
 
 
 /**
@@ -200,10 +203,16 @@ public class ClientController {
         model.addAttribute("bean",bean);
         return "/client/product_search_list.jsp";
     }
-    //显示验证码
+
+    /**
+     * //显示验证码
+     * @param response
+     * @param session
+     * @throws IOException
+     */
     @RequestMapping("imageCode")
     public void imageCode(HttpServletResponse response , HttpSession session) throws IOException {
-//设置验证码的大小
+        //设置验证码的大小
         int width = 100;
         int height = 50;
         StringBuffer code = new StringBuffer();
@@ -212,7 +221,9 @@ public class ClientController {
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 
         //美化图片
-        Graphics g = image.getGraphics();//画笔对象
+
+        //画笔对象
+        Graphics g = image.getGraphics();
         g.setColor(Color.pink);
         g.fillRect(0,0,width,height);
 
@@ -248,11 +259,26 @@ public class ClientController {
         session.setAttribute("CHECKCODE_SERVER", checkcode);
     }
 
-    //以用户进行订单查询
+    /**
+     * 以用户进行订单查询
+     * @param model
+     * @return
+     */
     @RequestMapping("/mycount/findOrderByUser")
-    public String findOrderByUser(){
+    public String findOrderByUser(Model model, HttpSession session){
+        User user = (User)session.getAttribute("user");
+        List<Orders> orders = clientService.findOrderByUser(user.getId());
+        model.addAttribute("orders",orders);
         return "/client/orderlist.jsp";
     }
 
-
+    /**
+     * 修改用户信息
+     * @return
+     */
+    @RequestMapping("/mycount/changeImage")
+    @ResponseBody
+    public String changeImage(){
+        return "OK";
+    }
 }

@@ -4,8 +4,17 @@
 <html>
 <head>
 <title>电子书城</title>
+	<script src="${pageContext.request.contextPath}/client/js/jquery-3.4.1.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/client/css/main.css" type="text/css" />
+	<script type="text/javascript">
+		function changeImage() {
+			$.post("${pageContext.request.contextPath}/mycount/changeImage",function (data) {
+				alert("修改成功");
+			})
+		}
+	</script>
 </head>
+
 <body class="main">
 	<p:user />
 	<jsp:include page="head.jsp" />
@@ -28,7 +37,7 @@
 						<tr>
 							<td class="listtd">
 								<img src="${pageContext.request.contextPath }/client/images/icon2.png" width="15" height="10" />&nbsp;&nbsp;&nbsp;&nbsp; 
-								<a href="${pageContext.request.contextPath}/findOrderByUser">订单查询</a>
+								<a href="${pageContext.request.contextPath}/mycount//findOrderByUser">订单查询</a>
 							</td>
 						</tr>
 						<tr>
@@ -48,6 +57,7 @@
 					</div>
 					<table cellspacing="0" class="infocontent">
 						<tr>
+
 							<td>
 								<table width="100%" border="0" cellspacing="2" class="upline">
 									<tr>
@@ -91,9 +101,7 @@
 									</tr>
 								</table>
 								<p style="text-align:center">
-									<a href="success.html">
-										<img src="${pageContext.request.contextPath }/client/images/botton_gif_025.gif" border="0" width="140" height="35"/>
-									</a>
+										<img src="${pageContext.request.contextPath }/client/images/botton_gif_025.gif" border="0" width="140" height="35" onclick="changeImage()"/>
 								</p>
 								<p style="text-align:center">&nbsp;</p>
 							</td>

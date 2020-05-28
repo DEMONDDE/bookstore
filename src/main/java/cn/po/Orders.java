@@ -15,16 +15,44 @@ import java.util.List;
 @Setter
 @ToString
 public class Orders {
-    String id;
-    String receiverName;//接收用户名
-    String receiverAddress;//接受地址
-    String receiverPhone;//接受电话
-    String payState;//支付状态
-    Date orderTime;//订单时间
-    int user_id;//订单用户id
-    double money;//订单价格
+    private String id;
+    /**
+     * 接收用户名
+     */
+    private String receiverName;
+    /**
+     * 接受地址
+     */
+    private String receiverAddress;
+    /**
+     * 接受电话
+     */
+    private String receiverPhone;
+    /**
+     * 支付状态
+     */
+    private int payState;
+    /**
+     * 订单时间
+     */
+    private Date orderTime;
+    /**
+     * 订单用户id
+     */
+    private int user_id;
+    /**
+     *订单价格
+     */
+    private double money;
+    /**
+     * 订单数量
+     */
+    private int size;
     User user;
-    List<OrderItem> orderitem;//产品信息
+    /**
+     * 产品信息
+     */
+    List<OrderItem> orderitem;
 
     public Orders (){
         this.orderitem = new ArrayList<OrderItem>();
