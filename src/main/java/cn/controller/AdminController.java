@@ -27,7 +27,11 @@ public class AdminController {
     @Autowired
     private AdminService adminService;
 
-    //查询所有商品
+    /**
+     * 查询所有商品
+     * @param model
+     * @return
+     */
     @RequestMapping("/listProduct")
     public String listProduct(Model model){
         List<Products> list = adminService.findAll();
@@ -35,7 +39,16 @@ public class AdminController {
         return "/admin/products/list.jsp";
     }
 
-    //按条件查询所有商品
+    /**
+     * 按条件查询所有商品
+     * @param id
+     * @param name
+     * @param category
+     * @param minprice
+     * @param maxprice
+     * @param model
+     * @return
+     */
     @RequestMapping("/findProductByManyCondition")
     public String findProductByManyCondition(Integer id, String name, String category, Integer minprice, Integer maxprice, Model model){
         //将空值转换为null以便查询
@@ -50,7 +63,14 @@ public class AdminController {
         return "/admin/products/list.jsp";
     }
 
-    //上传商品
+    /**
+     * 上传商品
+     * @param upload
+     * @param product
+     * @param request
+     * @return
+     * @throws IOException
+     */
     @RequestMapping("/addProduct")
     public String addProduct(MultipartFile upload, Products product, HttpServletRequest request) throws IOException {
         //文件保存路径
@@ -73,7 +93,12 @@ public class AdminController {
     }
 
 
-    //删除商品
+    /**
+     * 删除商品
+     * @param id
+     * @param request
+     * @return
+     */
     @RequestMapping("deleteProduct")
     public String deleteProduct(int id,HttpServletRequest request){
         //删除图片
@@ -88,14 +113,27 @@ public class AdminController {
         return "/listProduct";
     }
 
-    //按id查询
+    /**
+     * 按id查询
+     * @param id
+     * @param model
+     * @return
+     */
     @RequestMapping("adminfindProductById")
     public String findProductById(int id,Model model){
         Products products = adminService.findProductById(id);
         model.addAttribute("p",products);
         return "/admin/products/edit.jsp";
     }
-    //修改商品
+
+    /**
+     * 修改商品
+     * @param upload
+     * @param product
+     * @param request
+     * @return
+     * @throws IOException
+     */
     @RequestMapping("editProduct")
     public String editProduct(MultipartFile upload,Products product,HttpServletRequest request) throws IOException {
         String path = request.getSession().getServletContext().getRealPath("/client/bookcover/");
@@ -113,7 +151,14 @@ public class AdminController {
         return "/listProduct";
     }
 
-    //榜单下载（未测试）
+    /**
+     *  榜单下载（未测试）
+     * @param year
+     * @param month
+     * @param response
+     * @param servletContext
+     * @throws IOException
+     */
     @RequestMapping("/download")
     public void download(String year, String month, HttpServletResponse response, ServletContext servletContext) throws IOException {
         //查询销售数据
@@ -137,7 +182,11 @@ public class AdminController {
         out.close();
     }
 
-    //订单查询
+    /**
+     * 订单查询
+     * @param model
+     * @return
+     */
     @RequestMapping("/findOrders")
     public String findOrders(Model model){
         List<Orders> orders = adminService.findOrders();
@@ -145,7 +194,13 @@ public class AdminController {
         return "/admin/orders/list.jsp";
     }
 
-    //订单按条件查询
+    /**
+     * 订单按条件查询
+     * @param model
+     * @param id
+     * @param receiverName
+     * @return
+     */
     @RequestMapping("/findOrderByManyCondition")
     public String findOrderByManyCondition(Model model,String id, String receiverName){
 
@@ -154,7 +209,12 @@ public class AdminController {
         return "/admin/orders/list.jsp";
     }
 
-    //订单按id查询
+    /**
+     *  订单按id查询
+     * @param id
+     * @param model
+     * @return
+     */
     @RequestMapping("/findOrderById")
     public String findOrderById(String id, Model model){
         Orders order = adminService.findOrderById(id);
@@ -162,7 +222,12 @@ public class AdminController {
         return "/admin/orders/view.jsp";
     }
 
-    //订单删除
+    /**
+     * 订单删除
+     * @param id
+     * @param type
+     * @return
+     */
     @RequestMapping("/delOrderById")
     public String delOrderById(String id,String type){
         if(type != null && type.trim().length() > 0){

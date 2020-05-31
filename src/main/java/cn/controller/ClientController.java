@@ -37,7 +37,14 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
-    //用户注册
+    /**
+     * 用户注册
+     * @param session
+     * @param user
+     * @param response
+     * @return
+     * @throws IOException
+     */
     @RequestMapping("register")
     @ResponseBody
     public String register(HttpSession session, User user,HttpServletResponse response) throws IOException {
@@ -53,13 +60,21 @@ public class ClientController {
         return "OK";
     }
 
-    //公告版和本周热卖
+    /**
+     * 公告版和本周热卖
+     * @return
+     */
     @RequestMapping("ShowIndexServlet")
     public String ShowIndexServlet(){
         return "/client/index.jsp";
     }
 
-    //向购物车添加商品
+    /**
+     * 向购物车添加商品
+     * @param id
+     * @param session
+     * @return
+     */
     @RequestMapping("/addCart")
     public String addCartServlet(int id,HttpSession session){
         Products product = clientService.findProductById(id);
@@ -78,7 +93,12 @@ public class ClientController {
         return "/client/cart.jsp";
     }
 
-    //查询商品信息
+    /**
+     * 查询商品信息
+     * @param id
+     * @param model
+     * @return
+     */
     @RequestMapping("findProductById")
     public String findProductById(int id, Model model){
         Products product = clientService.findProductById(id);
@@ -87,7 +107,13 @@ public class ClientController {
     }
 
 
-    //删除购物车商品
+    /**
+     * 删除购物车商品
+     * @param id
+     * @param count
+     * @param session
+     * @return
+     */
     @RequestMapping("/changeCart")
     public String changeCart(int id, int count, HttpSession session){
         Map<Products,Integer> cart = (Map<Products,Integer>)session.getAttribute("cart");
@@ -102,12 +128,22 @@ public class ClientController {
     }
 
 
-    //分页查询
+    /**
+     * //分页查询
+     * @param currentPage
+     * @param currentCount
+     * @param category
+     * @param model
+     * @return
+     */
     @RequestMapping("/showProductByPage")
     public String showProductByPage(Integer currentPage, Integer currentCount, String category, Model model){
-        int user_currentPage = 1;//当前页面默认为1
-        int user_currentCount = 4;//每页显示商品个数默认为4
-        String user_category = "全部商品";//默认商品种类
+        //当前页面默认为1
+        int user_currentPage = 1;
+        //每页显示商品个数默认为4
+        int user_currentCount = 4;
+        //默认商品种类
+        String user_category = "全部商品";
         if(currentPage!=null){
             user_currentPage = currentPage;
         }
@@ -126,9 +162,17 @@ public class ClientController {
     }
 
 
-
-
-    //用户登陆
+    /**
+     * //用户登陆
+     * @param username
+     * @param password
+     * @param remember
+     * @param autologin
+     * @param model
+     * @param response
+     * @param session
+     * @return
+     */
     @RequestMapping("login")
     public String login(String username, String password, String remember, String autologin, Model model, HttpServletResponse response, HttpSession session) {
         User user = clientService.login(username, password);
@@ -160,7 +204,12 @@ public class ClientController {
         return "/client/login.jsp";
     }
 
-    //存储订单
+    /**
+     *  //存储订单
+     * @param order
+     * @param session
+     * @return
+     */
     @RequestMapping("createOrder")
     public String createOrderServlet(Orders order,HttpSession session){
         //获取用户
@@ -184,12 +233,20 @@ public class ClientController {
         return "/client/createOrderSuccess.jsp";
     }
 
-
-    //图书搜索
+    /**
+     *  图书搜索
+     * @param currentPage
+     * @param currentCount
+     * @param textfield
+     * @param model
+     * @return
+     */
     @RequestMapping("MenuSearchServlet")
     public String menuSearchServlet(Integer currentPage,Integer currentCount, String textfield, Model model){
-        int user_currentPage = 1;//当前页面默认为1
-        int user_currentCount = 4;//每页显示商品个数默认为4
+        //当前页面默认为1
+        int user_currentPage = 1;
+        //每页显示商品个数默认为4
+        int user_currentCount = 4;
         if(currentPage!=null){
             user_currentPage = currentPage;
         }

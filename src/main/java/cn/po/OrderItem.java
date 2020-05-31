@@ -12,6 +12,12 @@ import java.io.Serializable;
 @Data
 public class OrderItem implements Serializable {
     String order_id;
-    int product_id;//商品编号
-    int buynum;//购买数量
+    /**
+     *  商品编号
+     */
+    int product_id;
+    /**
+     * 购买数量
+     */
+    int buynum;
 }

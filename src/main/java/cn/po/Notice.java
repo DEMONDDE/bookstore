@@ -12,7 +12,16 @@ import java.util.Date;
 @Setter
 public class Notice {
     int id;
-    String title;//题目
-    String detail;//内容
-    Date n_time;//创建时间
+    /**
+     * 题目
+     */
+    String title;
+    /**
+     * 内容
+     */
+    String detail;
+    /**
+     * 创建时间
+     */
+    Date n_time;
 }

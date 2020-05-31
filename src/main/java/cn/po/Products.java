@@ -16,17 +16,39 @@ import java.util.Objects;
 @Setter
 public class Products {
     int id;
-    String name;//商品名称
-    int price;//价格    由于需要精确表示所以用大数类,但只是测试所以统一采用整数
-    String category;//种类
-    int pnum;//库存
-    String imgurl;//图片url
-    String description;//商品描述
+    /**
+     * 商品名称
+     */
+    String name;
+    /**
+     * 价格    由于需要精确表示所以用大数类,但只是测试所以统一采用整数
+     */
+    int price;
+    /**
+     * 种类
+     */
+    String category;
+    /**
+     * 库存
+     */
+    int pnum;
+    /**
+     * 图片url
+     */
+    String imgurl;
+    /**
+     * 商品描述
+     */
+    String description;
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Products products = (Products) o;
         return id == products.id;
     }

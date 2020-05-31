@@ -13,10 +13,11 @@ import java.util.List;
 
 /**
  * adminService的实现类
+ * @author 胡建德
  */
 
 @Service("adminService")
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public class AdminServiceImpl implements AdminService {
 
     @Autowired

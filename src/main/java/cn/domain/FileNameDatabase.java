@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.io.File;
 
 /**
+ * 仅开发使用
  * 对数据库插入信息
  */
 public class FileNameDatabase {
@@ -13,7 +14,9 @@ public class FileNameDatabase {
     @Autowired
     private DatabaseInsert databaseInsert;
 
-    //插入书籍信息
+    /**
+     * 插入书籍信息
+     */
     public void insertBook(){
         String path = "C:\\Users\\78114\\Desktop\\bookcover";
         File file = new File(path);
