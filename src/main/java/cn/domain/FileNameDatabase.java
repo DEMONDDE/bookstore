@@ -8,6 +8,7 @@ import java.io.File;
 /**
  * 仅开发使用
  * 对数据库插入信息
+ * @author 胡建德
  */
 public class FileNameDatabase {
 
