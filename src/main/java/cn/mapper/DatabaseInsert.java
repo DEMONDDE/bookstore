@@ -14,7 +14,7 @@ public interface DatabaseInsert {
      * 插入书籍名称
      * @param names
      */
-    public void insertBook(String[] names);
+    public void insertBook(String names);
 
     /**
      * 插入书籍信息

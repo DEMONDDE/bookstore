@@ -3,10 +3,13 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.mapper.DatabaseInsert">
-    <insert id="insertBook"  parameterType="list">
+    <insert id="insertBook"  >
         INSERT INTO products(name ,price,category,prum,imgurl)value
         <foreach collection="list" item="product" separator=",">
-        (#{product.name},#{product.price},#{product.category},#{product.prum},#{product.imgurl})
+        (#{product.name},#{product.price},#{product.category},#{product.pnum},#{product.imgurl})
         </foreach>
     </insert>
+<!--    <insert id="insertBook">-->
+<!--        insert into products(name) values (#{name })-->
+<!--    </insert>-->
 </mapper>

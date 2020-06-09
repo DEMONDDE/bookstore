@@ -18,12 +18,12 @@ public class FileNameDatabase {
     /**
      * 插入书籍信息
      */
-    public void insertBook(){
-        String path = "C:\\Users\\78114\\Desktop\\bookcover";
-        File file = new File(path);
-        String[] names = file.list();
-        System.out.println(names[2]);
-        System.out.println(databaseInsert);
-        databaseInsert.insertBook(names);
-    }
+//    public void insertBook(){
+//        String path = "C:\\Users\\78114\\Desktop\\bookcover";
+//        File file = new File(path);
+//        String[] names = file.list();
+//        System.out.println(names[2]);
+//        System.out.println(databaseInsert);
+//        databaseInsert.insertBook(names);
+//    }
 }

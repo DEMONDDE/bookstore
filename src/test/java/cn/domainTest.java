@@ -1,8 +1,6 @@
 package cn;
 
-import cn.domain.FileNameDatabase;
 import cn.domain.MailUtiles;
-import cn.mapper.ClientMapper;
 import cn.mapper.DatabaseInsert;
 import cn.po.Products;
 import org.junit.Assert;
@@ -125,4 +123,6 @@ public class domainTest {
         }
         Assert.assertEquals(result, 4);
     }
+
+
 }
