@@ -3,11 +3,13 @@ package cn.controller;
 
 import cn.domain.ActivateCode;
 import cn.domain.PageBean;
+import cn.domain.RedisUtil;
 import cn.po.OrderItem;
 import cn.po.Orders;
 import cn.po.Products;
 import cn.po.User;
 import cn.service.ClientService;
+import com.alibaba.fastjson.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Controller;
@@ -36,6 +38,9 @@ public class ClientController {
 
     @Autowired
     private ClientService clientService;
+
+    @Autowired
+    private RedisUtil redisUtil;
 
     /**
      * 用户注册
@@ -192,6 +197,10 @@ public class ClientController {
             }
             //保存用户
             session.setAttribute("user",user);
+            //转换为json
+            String userJson = JSON.toJSONString(user);
+            //在redis中进行保存
+            redisUtil.set(user.getUsername(), userJson);
             //判断登陆角色来决定登陆成功显示的页面
             if (user.getRole().equals("管理员")) {
                 return "/admin/login/home.jsp";

@@ -1,6 +1,7 @@
 package cn.po;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
@@ -14,6 +15,7 @@ import java.util.Objects;
 @ToString
 @Getter
 @Setter
+@NoArgsConstructor
 public class Products {
     int id;
     /**

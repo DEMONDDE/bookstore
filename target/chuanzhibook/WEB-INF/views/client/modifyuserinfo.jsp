@@ -101,9 +101,7 @@
 									</tr>
 								</table>
 								<p style="text-align:center">
-									<a href="success.html">
-										<img src="${pageContext.request.contextPath }/client/images/botton_gif_025.gif" border="0" width="140" height="35"/>
-									</a>
+										<img src="${pageContext.request.contextPath }/client/images/botton_gif_025.gif" border="0" width="140" height="35" onclick="changeImage()"/>
 								</p>
 								<p style="text-align:center">&nbsp;</p>
 							</td>
