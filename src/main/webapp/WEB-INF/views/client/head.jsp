@@ -12,7 +12,7 @@
 			<td style="text-align:right">
 				<img src="${pageContext.request.contextPath}/client/images/cart.gif" width="26" height="23" style="margin-bottom:-4px" />&nbsp;<a href="${pageContext.request.contextPath}/WEB-INF/views/client/cart.jsplient/cart.jsp">购物车</a>
 				| <a href="#">帮助中心</a> 
-				| <a href="${pageContext.request.contextPath}/client/login">我的帐户</a>
+				| <a href="${pageContext.request.contextPath}/client/login?name=${user.username}">我的帐户</a>
 				| <a href="${pageContext.request.contextPath}/client/register">新用户注册</a>
 			 
 			</td>		

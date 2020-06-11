@@ -42,7 +42,21 @@
         <property name="prefix" value="/WEB-INF/views"/>
     </bean>
 
-    
+<!-- 拦截器配置-->
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/client/login"/>
+            <bean class="cn.filter.LoginHandler"></bean>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/client/order"/>
+            <bean class="cn.filter.CheckLoginHandler"></bean>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/mycount/*"/>
+            <bean class="cn.filter.CheckLoginHandler"></bean>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 
 </beans>

@@ -4,6 +4,8 @@ import org.junit.Test;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * 用于跳转jsp页面
  */
@@ -26,12 +28,18 @@ public class JspClientController {
         return "/client/modifyuserinfo.jsp";
     }
     @RequestMapping("/login")
-    public String toLogin(){
-        return "/client/login.jsp";
+    public String toLogin(HttpServletRequest request){
+        String name = request.getParameter("name");
+        return "/client/login.jsp?name = "+name;
     }
 
     @RequestMapping("/order")
     public String toOrder(){
-        return "/client/login.jsp";
+        return "/client/order.jsp";
+    }
+
+    @RequestMapping("/myAccount")
+    public String tomyAccount(){
+        return "/client/myAccount.jsp";
     }
 }

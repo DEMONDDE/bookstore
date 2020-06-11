@@ -11,7 +11,7 @@
 			var login = "${cookie.autologin.value}";
 			var state = "true";
 			if(login == state){
-				window.location.href="${pageContext.request.contextPath}/login?username="+uname+"&password="+pword;
+				window.location.href="${pageContext.request.contextPath}/loginuser?username="+uname+"&password="+pword;
 			}
 		 }
 	</script>
@@ -20,7 +20,7 @@
 	<jsp:include page="head.jsp" />
 	<jsp:include page="menu_search.jsp" />
 	<div id="divcontent">
-		<form action="${pageContext.request.contextPath}/login" method="post">
+		<form action="${pageContext.request.contextPath}/loginuser" method="post">
 			<table width="900px" border="0" cellspacing="0">
 				<tr>
 					<td style="padding:30px"><div style="height:470px">
@@ -95,7 +95,7 @@
 											<p>千种图书，供你挑选！注册即享受丰富折扣和优惠，便宜有好货！超过万本图书任您选。</p>
 											<p>超人气社区！精彩活动每一天。买卖更安心！支付宝交易超安全。</p>
 											<p style="text-align:left">
-												<a href="${pageContext.request.contextPath }/WEB-INF/views/client/register.jspt/register.jsp">
+												<a href="${pageContext.request.contextPath }/WEB-INF/views/client/register.jsp">
 													<img src="${pageContext.request.contextPath }/client/images/signupbutton.gif" width="135" height="33" />
 												</a>
 											</p>

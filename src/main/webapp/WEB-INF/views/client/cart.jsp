@@ -116,7 +116,7 @@
 												</a>
 												&nbsp;&nbsp;&nbsp;&nbsp;
                                                  <!--结账 -->
-												<a href="${pageContext.request.contextPath}/client/order">
+												<a href="${pageContext.request.contextPath}/client/order?name=${user.username}">
 													<img src="${pageContext.request.contextPath}/client/images/gwc_buy.gif" border="0" />
 												</a>
 											</div>

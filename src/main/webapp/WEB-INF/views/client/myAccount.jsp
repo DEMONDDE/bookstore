@@ -31,14 +31,14 @@
 							<td class="listtd">
 								<img src="${pageContext.request.contextPath }/client/images/icon1.png" width="15" height="10" />
 								&nbsp;&nbsp;&nbsp;&nbsp; 
-								<a href="${pageContext.request.contextPath }/client/mycount/modifyuserinfo">用户信息修改</a>
+								<a href="${pageContext.request.contextPath }/client/mycount/modifyuserinfo?name=${user.username}">用户信息修改</a>
 							</td>
 						</tr>
 						<tr>
 							<td class="listtd">
 								<img src="${pageContext.request.contextPath }/client/images/icon2.png" width="15" height="10" />
 								&nbsp;&nbsp;&nbsp;&nbsp; 
-								<a href="${pageContext.request.contextPath}/mycount/findOrderByUser">订单查询</a>
+								<a href="${pageContext.request.contextPath}/mycount/findOrderByUser?name=${user.username}">订单查询</a>
 							</td>
 						</tr>
 						<tr>

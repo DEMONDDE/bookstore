@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import javax.imageio.ImageIO;
 import javax.jws.soap.SOAPBinding;
 import javax.mail.Session;
@@ -178,7 +179,7 @@ public class ClientController {
      * @param session
      * @return
      */
-    @RequestMapping("login")
+    @RequestMapping("loginuser")
     public String login(String username, String password, String remember, String autologin, Model model, HttpServletResponse response, HttpSession session) {
         User user = clientService.login(username, password);
         if (user == null) {

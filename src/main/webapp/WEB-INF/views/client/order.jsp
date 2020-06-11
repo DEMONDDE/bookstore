@@ -27,7 +27,7 @@
 								<td>
 								<table width="100%" border="0" cellspacing="0">
 										<tr>
-											<td><img src="../../../client/images/buy2.gif" width="635" height="38" />
+											<td><img src="${pageContext.request.contextPath}/client/images/buy2.gif" width="635" height="38" />
 												<p>你好，${user.username}！欢迎您来到网上书城结算中心</p>
 											</td>
 										</tr>
@@ -83,7 +83,7 @@
 												</p>
 												<hr />
 												<p style="text-align:right">
-													<img src="../../../client/images/gif53_029.gif" width="204" height="51" border="0" onclick="checkOnSubmit();"/>
+													<img src="${pageContext.request.contextPath}/client/images/gif53_029.gif" width="204" height="51" border="0" onclick="checkOnSubmit();"/>
 												</p>
 											</td>
 										</tr>

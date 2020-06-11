@@ -37,7 +37,7 @@
 						<tr>
 							<td class="listtd">
 								<img src="${pageContext.request.contextPath }/client/images/icon2.png" width="15" height="10" />&nbsp;&nbsp;&nbsp;&nbsp; 
-								<a href="${pageContext.request.contextPath}/mycount//findOrderByUser">订单查询</a>
+								<a href="${pageContext.request.contextPath}/mycount/findOrderByUser?name=${user.username}">订单查询</a>
 							</td>
 						</tr>
 						<tr>
@@ -52,7 +52,7 @@
 					<div style="text-align:right; margin:5px 10px 5px 0px">
 						<a href="${pageContext.request.contextPath }/index.jsp">首页</a>
 						&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;
-						<a href="${pageContext.request.contextPath }/WEB-INF/views/client/myAccount.jsp/myAccount.jsp">&nbsp;我的帐户</a>
+						<a href="${pageContext.request.contextPath }/WEB-INF/views/client/mycount/myAccount.jsp?name=${user.username}">&nbsp;我的帐户</a>
 						&nbsp;&nbsp;&nbsp;&nbsp;&gt;&nbsp;&nbsp;&nbsp;&nbsp;用户信息修改
 					</div>
 					<table cellspacing="0" class="infocontent">

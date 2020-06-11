@@ -65,7 +65,7 @@
     <bean id="jedisConnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
         <property name="hostName" value="${redis.host}"></property>
         <property name="port" value="${redis.port}"></property>
-        <property name="password" value="${redis.password}"></property>
+        <property name="password" value=""></property>
     </bean>
 
     <!--redis操作模版,使用该对象可以操作redis  -->
