@@ -348,4 +348,19 @@ public class ClientController {
     public String changeImage(){
         return "OK";
     }
+
+    /**
+     * 用户退出
+     * @param session
+     * @return
+     */
+    @RequestMapping("/logout")
+    public String logout(HttpSession session){
+        //清除redis缓存
+        User user = (User) session.getAttribute("user");
+        redisUtil.del(user.getUsername());
+        //清除session缓存
+        session.invalidate();
+        return "/client/login";
+    }
 }
